@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="119dp"
+            app:srcCompat="@drawable/socialjamlogo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_Bibliotecas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bibliotecas"
+                app:icon="@drawable/library"
+                app:iconTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btn_Cines"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cines"
+                app:icon="@drawable/cinema"
+                app:iconTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btn_ComidaRapida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comida Rápida"
+                app:icon="@drawable/burger"
+                app:iconTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btn_Correos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correos"
+                app:icon="@drawable/postal"
+                app:iconTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btn_Gasolineras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gasolineras"
+                app:icon="@drawable/fillingstation"
+                app:iconTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btn_Gimnasios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gimnasios"
+                app:icon="@drawable/gym"
+                app:iconTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btn_Museos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Museos"
+                app:icon="@drawable/artgallery"
+                app:iconTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btn_Playas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Playas"
+                app:backgroundTint="#2196F3"
+                app:icon="@drawable/beach"
+                app:iconTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btn_TiendasRopa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiendas Ropa"
+                app:icon="@drawable/clothes"
+                app:iconTintMode="multiply" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
