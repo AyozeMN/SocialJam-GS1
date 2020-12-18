@@ -42,9 +42,9 @@ public class MapsActivityBibliotecas extends FragmentActivity implements OnMapRe
         mMap = googleMap;
 
         LatLng lp = new LatLng(28.134457, -15.435111);
-        mMap.addMarker(new MarkerOptions().position(lp).title("Marker in Las Palmas").snippet("Ciudad de Las Palmas de Gran Canaria"));
+        mMap.addMarker(new MarkerOptions().position(lp).icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_location)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(lp));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(10.5f));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
 
         LatLng bMunicipalJosefina = new LatLng(28.134398455809993, -15.440590627979137);
         mbMunicipalJosefina = googleMap.addMarker(new MarkerOptions().position(bMunicipalJosefina).title("Biblioteca Municipal Josefina De La Torre").icon(BitmapDescriptorFactory.fromResource(R.drawable.library)));

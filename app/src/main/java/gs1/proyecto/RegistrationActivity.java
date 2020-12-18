@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_activity);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         tv_name = findViewById(R.id.editTextTextPersonName);
         tv_surname = findViewById(R.id.editTextTextPersonSurname);

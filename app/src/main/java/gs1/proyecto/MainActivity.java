@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btnBibliotecas,btnCines,btnComidaRapida,btnCorreos,btnGasolineras,btnGimnasios,btnMuseos,btnPlayas,btnTiendasRopa;
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         btnBibliotecas = findViewById(R.id.btn_Bibliotecas);
         btnCines = findViewById(R.id.btn_Cines);

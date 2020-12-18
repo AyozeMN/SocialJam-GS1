@@ -51,16 +51,9 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
-        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_location));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
-        googleMap.addMarker(markerOptions);
         mMap = googleMap;
-
         LatLng lp = new LatLng(28.134457, -15.435111);
-        mMap.addMarker(new MarkerOptions().position(lp).title("Marker in Las Palmas").snippet("Ciudad de Las Palmas de Gran Canaria"));
+        mMap.addMarker(new MarkerOptions().position(lp).icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_location)));
 
         //Permitir zoom
         mMap.getUiSettings().setZoomControlsEnabled(true);
@@ -82,7 +75,7 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
         //Se puede añadir el zoom directamente aquí: mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lp, 10));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(lp));
         //Valor mínimo del zoom es 2.0 y máximo 21.0
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
 
         LatLng pAlcaravaneras = new LatLng(28.130040218622792, -15.429274438906358);
         mpAlcaravaneras = googleMap.addMarker(new MarkerOptions().position(pAlcaravaneras).title("Playa de las Alcaravaneras").icon(BitmapDescriptorFactory.fromResource(R.drawable.beachyellow)));
