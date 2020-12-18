@@ -15,7 +15,7 @@
             android:id="@+id/iv_mainlogo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +23,7 @@
             app:srcCompat="@drawable/logo" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -42,6 +43,7 @@
                 android:hint=" Contraseña"
                 android:inputType="textPassword"
                 android:textSize="22sp"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
@@ -50,6 +52,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="261dp"
                 android:layout_height="259dp"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.461"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,6 +71,7 @@
                 android:hint=" Email"
                 android:inputType="textEmailAddress"
                 android:textSize="22sp"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -78,9 +82,12 @@
                 android:layout_width="200dp"
                 android:layout_height="69dp"
                 android:layout_marginTop="36dp"
-                android:background="#282D45"
+                android:background="#000000"
                 android:text="Entrar"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"
+                app:backgroundTintMode="add"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
@@ -93,6 +100,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Registrarse"
                 android:textColor="#000000"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loginButton" />
@@ -104,6 +112,7 @@
                 android:layout_marginTop="4dp"
                 android:text="__"
                 android:textColor="#787878"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loginButton" />
@@ -113,8 +122,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email o contraseña incorrectos."
-                android:visibility="gone"
                 android:textColor="#D50101"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/loginButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

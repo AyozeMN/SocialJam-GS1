@@ -10,4 +10,14 @@
     <string name="Email">Email</string>
     <string name="RepitePassword">Repite Contraseña</string>
     <string name="VerTodo">Ver Usuarios</string>
+    <string name="correos">Correos</string>
+    <string name="comidaRapida">Comida Rápida</string>
+    <string name="cines">Cines</string>
+    <string name="bibliotecas">Bibliotecas</string>
+    <string name="gasolineras">Gasolineras</string>
+    <string name="gimnasios">Gimnasios</string>
+    <string name="museos">Museos</string>
+    <string name="playas">Playas</string>
+    <string name="tiendasRopa">Tiendas Ropa</string>
+    <string name="imageContDesc">Descripción de la imagen. Falta rellenar.</string>
 </resources>
