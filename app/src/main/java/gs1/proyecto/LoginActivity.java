@@ -71,11 +71,12 @@ public class LoginActivity extends AppCompatActivity {
     // muestra mensaje de contraseña erronea
     private void validate(String email, String password){
         if(email.equals("admin") && password.equals("admin")) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, ModifyActivity.class);
             startActivity(intent);
         }
         else if (email.equals("user") && password.equals("user")){
-            //LLama a actividad de user
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
         } else {
             password_tv.setText("");
             failedLogin_tv.setVisibility(View.VISIBLE);

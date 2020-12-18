@@ -17,11 +17,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     //Mostrar info implementamos GoogleMap.OnMarkerClickListener
     private Marker mpAlcaravaneras, mpConfital, mpCicer, mpPenavieja, mpChica, mpGrande, mpPuntilla;
+    //List<String> lPlayas = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,28 +77,28 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
         mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
 
         LatLng pAlcaravaneras = new LatLng(28.130040218622792, -15.429274438906358);
-        mpAlcaravaneras = googleMap.addMarker(new MarkerOptions().position(pAlcaravaneras).title("Playa de las Alcaravaneras").icon(BitmapDescriptorFactory.defaultMarker(R.drawable.beach)));
+        mpAlcaravaneras = googleMap.addMarker(new MarkerOptions().position(pAlcaravaneras).title("Playa de las Alcaravaneras"));//.icon(BitmapDescriptorFactory.defaultMarker(R.drawable.beach)));
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //Para cambiar color de icono usamos .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
         //.addMarker(new MarkerOptions().position(pAlcaravaneras).title("Playa de las Alcaravaneras").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         LatLng pConfital = new LatLng(28.159831539195743, -15.43552598234442);
-        mpConfital = googleMap.addMarker(new MarkerOptions().position(pConfital).title("Playa del Confital").icon(BitmapDescriptorFactory.defaultMarker(R.drawable.beach)));
-                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
+        mpConfital = googleMap.addMarker(new MarkerOptions().position(pConfital).title("Playa del Confital"));//.icon(BitmapDescriptorFactory.defaultMarker(R.drawable.beachblack)));
+        //.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //mMap.addMarker(new MarkerOptions().position(pConfital).title("Playa del Confital").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         LatLng pCicer = new LatLng(28.131981065294294, -15.444440917128023);
-        mpCicer = googleMap.addMarker(new MarkerOptions().position(pCicer).title("Playa la Cícer").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
+        mpCicer = googleMap.addMarker(new MarkerOptions().position(pCicer).title("Playa la Cícer"));//.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //mMap.addMarker(new MarkerOptions().position(pCicer).title("Playa la Cícer").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         LatLng pPenavieja = new LatLng(28.137014397171363, -15.438368395951127);
-        mpPenavieja = googleMap.addMarker(new MarkerOptions().position(pPenavieja).title("Playa Peña de la Vieja").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
+        mpPenavieja = googleMap.addMarker(new MarkerOptions().position(pPenavieja).title("Playa Peña de la Vieja"));//.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //mMap.addMarker(new MarkerOptions().position(pPenavieja).title("Playa Peña de la Vieja").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         LatLng pChica = new LatLng(28.14059056826637, -15.436158255634496);
-        mpChica = googleMap.addMarker(new MarkerOptions().position(pChica).title("Playa Chica").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
+        mpChica = googleMap.addMarker(new MarkerOptions().position(pChica).title("Playa Chica"));//.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //mMap.addMarker(new MarkerOptions().position(pChica).title("Playa Chica").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         LatLng pGrande = new LatLng(28.144015255041584, -15.432746485901356);
-        mpGrande = googleMap.addMarker(new MarkerOptions().position(pGrande).title("Playa Grande").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
+        mpGrande = googleMap.addMarker(new MarkerOptions().position(pGrande).title("Playa Grande"));//.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //mMap.addMarker(new MarkerOptions().position(pGrande).title("Playa Grande").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         LatLng pPuntilla = new LatLng(28.14831014942326, -15.431394652610866);
-        mpPuntilla = googleMap.addMarker(new MarkerOptions().position(pPuntilla).title("Playa la Puntilla").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
+        mpPuntilla = googleMap.addMarker(new MarkerOptions().position(pPuntilla).title("Playa la Puntilla"));//.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //mMap.addMarker(new MarkerOptions().position(pPuntilla).title("Playa la Puntilla").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
 
         //Para que escuche los clicks
@@ -107,7 +112,7 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
             Toast.makeText(this, "NIVEL amarillo, PELIGRO", Toast.LENGTH_SHORT).show();
         }
         if (marker.equals(mpConfital)) {
-            Toast.makeText(this, "verde jjj", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "verde", Toast.LENGTH_SHORT).show();
         }
         return false;
 
