@@ -2,4 +2,6 @@
     <string name="app_name">SocialJam</string>
     <string name="title_activity_maps1">Playas</string>
     <string name="title_activity_maps_bibliotecas">Bibliotecas</string>
+    <string name="next_arrow">\u003E</string>
+    <string name="back_arrow">\u003C</string>
 </resources>

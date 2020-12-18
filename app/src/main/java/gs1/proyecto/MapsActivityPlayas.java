@@ -69,7 +69,7 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
         //Se puede añadir el zoom directamente aquí: mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lp, 10));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(lp));
         //Valor mínimo del zoom es 2.0 y máximo 21.0
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(10.5f));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
 
         LatLng pAlcaravaneras = new LatLng(28.130040218622792, -15.429274438906358);
         mpAlcaravaneras = googleMap.addMarker(new MarkerOptions().position(pAlcaravaneras).title("Playa de las Alcaravaneras").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));

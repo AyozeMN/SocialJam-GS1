@@ -15,16 +15,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
-        btnBibliotecas = (Button) findViewById(R.id.btn_Bibliotecas);
-        btnCines = (Button) findViewById(R.id.btn_Cines);
-        btnComidaRapida = (Button) findViewById(R.id.btn_ComidaRapida);
-        btnCorreos = (Button) findViewById(R.id.btn_Correos);
-        btnGasolineras = (Button) findViewById(R.id.btn_Gasolineras);
-        btnGimnasios = (Button) findViewById(R.id.btn_Gimnasios);
-        btnMuseos = (Button) findViewById(R.id.btn_Museos);
-        btnPlayas = (Button) findViewById(R.id.btn_Playas);
-        btnTiendasRopa = (Button) findViewById(R.id.btn_TiendasRopa);
+        btnBibliotecas = findViewById(R.id.btn_Bibliotecas);
+        btnCines = findViewById(R.id.btn_Cines);
+        btnComidaRapida = findViewById(R.id.btn_ComidaRapida);
+        btnCorreos = findViewById(R.id.btn_Correos);
+        btnGasolineras = findViewById(R.id.btn_Gasolineras);
+        btnGimnasios = findViewById(R.id.btn_Gimnasios);
+        btnMuseos = findViewById(R.id.btn_Museos);
+        btnPlayas = findViewById(R.id.btn_Playas);
+        btnTiendasRopa = findViewById(R.id.btn_TiendasRopa);
 
         btnBibliotecas.setOnClickListener(new View.OnClickListener() {
             @Override

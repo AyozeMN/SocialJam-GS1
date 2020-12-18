@@ -31,11 +31,17 @@
 
         <activity
             android:name=".MapsActivityBibliotecas"
-            android:label="@string/title_activity_maps_bibliotecas"></activity>
+            android:label="@string/title_activity_maps_bibliotecas"/>
         <activity
             android:name=".MapsActivityPlayas"
             android:label="@string/title_activity_maps1" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="MainActivity" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:label="RegistrationActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
