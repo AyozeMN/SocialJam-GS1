@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_activity);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         bt_back = findViewById(R.id.btn_back);
         bt_next = findViewById(R.id.btn_next);

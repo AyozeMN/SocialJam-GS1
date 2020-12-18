@@ -39,8 +39,10 @@
             android:label="MainActivity" />
         <activity
             android:name=".RegistrationActivity"
-            android:label="RegistrationActivity" />
-        <activity android:name=".LoginActivity">
+            android:label="RegistrationActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
