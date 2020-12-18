@@ -6,4 +6,14 @@
     <string name="back_arrow">\u003C</string>
     <string name="UserName">Usuario</string>
     <string name="Password">Contraseña</string>
+    <string name="correos">Correos</string>
+    <string name="comidaRapida">Comida Rápida</string>
+    <string name="cines">Cines</string>
+    <string name="bibliotecas">Bibliotecas</string>
+    <string name="gasolineras">Gasolineras</string>
+    <string name="gimnasios">Gimnasios</string>
+    <string name="museos">Museos</string>
+    <string name="playas">Playas</string>
+    <string name="tiendasRopa">Tiendas Ropa</string>
+    <string name="imageContDesc">Descripción de la imagen. Falta rellenar.</string>
 </resources>

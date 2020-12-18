@@ -19,7 +19,8 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="119dp"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/logo"
+            android:contentDescription="@string/imageContDesc" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -31,7 +32,7 @@
                 android:id="@+id/btn_Bibliotecas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bibliotecas"
+                android:text="@string/bibliotecas"
                 app:icon="@drawable/library"
                 app:iconTintMode="multiply" />
 
@@ -39,7 +40,7 @@
                 android:id="@+id/btn_Cines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cines"
+                android:text="@string/cines"
                 app:icon="@drawable/cinema"
                 app:iconTintMode="multiply" />
 
@@ -47,7 +48,7 @@
                 android:id="@+id/btn_ComidaRapida"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Comida Rápida"
+                android:text="@string/comidaRapida"
                 app:icon="@drawable/burger"
                 app:iconTintMode="multiply" />
 
@@ -55,7 +56,7 @@
                 android:id="@+id/btn_Correos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Correos"
+                android:text="@string/correos"
                 app:icon="@drawable/postal"
                 app:iconTintMode="multiply" />
 
@@ -63,7 +64,7 @@
                 android:id="@+id/btn_Gasolineras"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gasolineras"
+                android:text="@string/gasolineras"
                 app:icon="@drawable/fillingstation"
                 app:iconTintMode="multiply" />
 
@@ -71,7 +72,7 @@
                 android:id="@+id/btn_Gimnasios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gimnasios"
+                android:text="@string/gimnasios"
                 app:icon="@drawable/gym"
                 app:iconTintMode="multiply" />
 
@@ -79,7 +80,7 @@
                 android:id="@+id/btn_Museos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Museos"
+                android:text="@string/museos"
                 app:icon="@drawable/artgallery"
                 app:iconTintMode="multiply" />
 
@@ -87,7 +88,7 @@
                 android:id="@+id/btn_Playas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Playas"
+                android:text="@string/playas"
                 app:backgroundTint="#2196F3"
                 app:icon="@drawable/beach"
                 app:iconTintMode="multiply" />
@@ -96,7 +97,7 @@
                 android:id="@+id/btn_TiendasRopa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiendas Ropa"
+                android:text="@string/tiendasRopa"
                 app:icon="@drawable/clothes"
                 app:iconTintMode="multiply" />
 
