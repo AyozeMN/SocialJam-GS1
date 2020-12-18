@@ -72,12 +72,12 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
         mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
 
         LatLng pAlcaravaneras = new LatLng(28.130040218622792, -15.429274438906358);
-        mpAlcaravaneras = googleMap.addMarker(new MarkerOptions().position(pAlcaravaneras).title("Playa de las Alcaravaneras").icon(BitmapDescriptorFactory.defaultMarker(R.drawable.beachyellow)));
+        mpAlcaravaneras = googleMap.addMarker(new MarkerOptions().position(pAlcaravaneras).title("Playa de las Alcaravaneras").icon(BitmapDescriptorFactory.defaultMarker(R.drawable.beach)));
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //Para cambiar color de icono usamos .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
         //.addMarker(new MarkerOptions().position(pAlcaravaneras).title("Playa de las Alcaravaneras").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         LatLng pConfital = new LatLng(28.159831539195743, -15.43552598234442);
-        mpConfital = googleMap.addMarker(new MarkerOptions().position(pConfital).title("Playa del Confital").icon(BitmapDescriptorFactory.defaultMarker(R.drawable.beachgreen)));
+        mpConfital = googleMap.addMarker(new MarkerOptions().position(pConfital).title("Playa del Confital").icon(BitmapDescriptorFactory.defaultMarker(R.drawable.beach)));
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         //mMap.addMarker(new MarkerOptions().position(pConfital).title("Playa del Confital").icon(BitmapDescriptorFactory.fromResource(R.drawable.beach)));
         LatLng pCicer = new LatLng(28.131981065294294, -15.444440917128023);
