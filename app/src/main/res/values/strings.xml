@@ -4,4 +4,6 @@
     <string name="title_activity_maps_bibliotecas">Bibliotecas</string>
     <string name="next_arrow">\u003E</string>
     <string name="back_arrow">\u003C</string>
+    <string name="UserName">Usuario</string>
+    <string name="Password">Contraseña</string>
 </resources>
