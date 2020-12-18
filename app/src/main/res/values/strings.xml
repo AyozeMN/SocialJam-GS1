@@ -6,4 +6,8 @@
     <string name="back_arrow">\u003C</string>
     <string name="UserName">Usuario</string>
     <string name="Password">Contraseña</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Email">Email</string>
+    <string name="RepitePassword">Repite Contraseña</string>
+    <string name="VerTodo">Ver Usuarios</string>
 </resources>
