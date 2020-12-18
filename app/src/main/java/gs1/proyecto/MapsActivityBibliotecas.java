@@ -41,6 +41,9 @@ public class MapsActivityBibliotecas extends FragmentActivity implements OnMapRe
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //Permitir zoom
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
         LatLng lp = new LatLng(28.134457, -15.435111);
         mMap.addMarker(new MarkerOptions().position(lp).title("Marker in Las Palmas").snippet("Ciudad de Las Palmas de Gran Canaria"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(lp));
