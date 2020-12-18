@@ -1,13 +1,11 @@
 package gs1.proyecto;
 
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
-
-import android.Manifest;
-import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.widget.Toast;
-
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,6 +21,9 @@ import java.util.List;
 public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
+    private Location currentLocation;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private static final int REQUEST_CODE = 101;
     //Mostrar info implementamos GoogleMap.OnMarkerClickListener
     private Marker mpAlcaravaneras, mpConfital, mpCicer, mpPenavieja, mpChica, mpGrande, mpPuntilla;
     //List<String> lPlayas = new ArrayList<>();
@@ -49,6 +50,12 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_location));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
+        googleMap.addMarker(markerOptions);
         mMap = googleMap;
 
         LatLng lp = new LatLng(28.134457, -15.435111);
@@ -115,6 +122,16 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
             Toast.makeText(this, "verde", Toast.LENGTH_SHORT).show();
         }
         return false;
-
     }
+
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        switch (requestCode) {
+//            case REQUEST_CODE:
+//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    fetchLocation();
+//                }
+//                break;
+//        }
+//    }
 }
