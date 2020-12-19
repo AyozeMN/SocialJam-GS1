@@ -118,6 +118,7 @@ public class MapsActivityBibliotecas extends FragmentActivity implements OnMapRe
         if (requestCode == ACCESS_LOCATION_REQUEST_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 enableUserLocation();
+                zoomToUserLocation();
             } else {
                 // It shows the user a dialog that the geolocation permission hasn't been granted
                 Toast.makeText(this, "Información de ubicación denegada.", Toast.LENGTH_SHORT).show();
