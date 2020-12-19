@@ -1,11 +1,11 @@
 package gs1.proyecto;
 
-import androidx.fragment.app.FragmentActivity;
 import android.location.Location;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
+
+import androidx.fragment.app.FragmentActivity;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,10 +19,12 @@ public class MapsActivityPlayas extends FragmentActivity implements OnMapReadyCa
 
     private GoogleMap mMap;
     private Location currentLocation;
-    private FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
     //Mostrar info implementamos GoogleMap.OnMarkerClickListener
     private Marker mpAlcaravaneras, mpConfital, mpCicer, mpPenavieja, mpChica, mpGrande, mpPuntilla;
+
+    public MapsActivityPlayas() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
