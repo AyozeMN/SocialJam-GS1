@@ -13,15 +13,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity {
 
     private ArrayList <EditText> fields = new ArrayList<>();
     private TextView tv_error;
-    private TextView tv_title;
-    private int screen = 0;
     EditText et_usuario, et_nombre, et_email, et_pass, et_pass2;
     ListView lv_userList;
     Button bt_back, bt_next, bt_viewUsers;
@@ -52,7 +49,6 @@ public class RegistrationActivity extends AppCompatActivity {
         fields.add(et_pass);
         fields.add(et_pass2);
 
-        tv_title = findViewById(R.id.tv_title);
         tv_error = findViewById(R.id.tv_error);
 
         tv_error.setText("");
@@ -65,12 +61,7 @@ public class RegistrationActivity extends AppCompatActivity {
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(screen==0)
-                    finish();
-                else{
-                    screen--;
-                    setFormVisibility(View.VISIBLE);
-                }*/
+                finish();
             }
         });
 
@@ -78,33 +69,14 @@ public class RegistrationActivity extends AppCompatActivity {
         bt_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(isDataValid() && screen==0) {
-                    screen++;
-                    setFormVisibility(View.GONE);
-                    askLocationServicesPermission();
-                } if (screen==1) {
-                    screen++;
-                    // Que mostrar en la pantalla numero 2
-                }*/
-
-                Users user;
+                User user;
 
                 if(isDataValid()) {
-                    user = new Users(-1, et_usuario.getText().toString(), et_nombre.getText().toString(), et_email.getText().toString(), et_pass.getText().toString());
-                    Toast.makeText(RegistrationActivity.this,user.toString(),Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(RegistrationActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                    user = new Users(-1, "error", "error", "error", "error");
+                    user = new User(-1, et_usuario.getText().toString(), et_nombre.getText().toString(), et_email.getText().toString(), et_pass.getText().toString());
+                    Toast.makeText(RegistrationActivity.this, user.toString(), Toast.LENGTH_SHORT).show();
+                    if(addUserToDB(user))
+                        showUsersOnListView(baseDeDatos);
                 }
-
-                BaseDeDatos baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
-
-                boolean success = baseDeDatos.addOne(user);
-
-                //Toast.makeText(RegistrationActivity.this, "Success= " + success, Toast.LENGTH_SHORT).show();
-
-                showUsersOnListView(baseDeDatos);
-
             }
         });
 
@@ -121,7 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
         lv_userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Users clickedUsuarios = (Users) parent.getItemAtPosition(position);
+                User clickedUsuarios = (User) parent.getItemAtPosition(position);
                 baseDeDatos.deleteOne(clickedUsuarios);
                 showUsersOnListView(baseDeDatos);
                 Toast.makeText(RegistrationActivity.this, "Deleted " + clickedUsuarios.toString(), Toast.LENGTH_SHORT).show();
@@ -130,12 +102,13 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void showUsersOnListView(BaseDeDatos baseDeDatos2) {
-        userArrayAdapter = new ArrayAdapter<Users>(RegistrationActivity.this, android.R.layout.simple_list_item_1, baseDeDatos2.getEveryone());
+        userArrayAdapter = new ArrayAdapter<User>(RegistrationActivity.this, android.R.layout.simple_list_item_1, baseDeDatos2.getEveryone());
         lv_userList.setAdapter(userArrayAdapter);
     }
 
-    private void askLocationServicesPermission() {
-
+    private boolean addUserToDB(User user){
+        BaseDeDatos baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
+        return baseDeDatos.addOne(user);
     }
 
     private boolean isDataValid() {
@@ -143,7 +116,7 @@ public class RegistrationActivity extends AppCompatActivity {
             if(field.getText().toString().length() < 3){
                 tv_error.setText(String.format("El campo %s debe tener más de 2 carácteres", field.getHint().toString()));
                 return false;
-            } if(!et_email.getText().toString().contains(".")){ //cambiar por arroba cuando termine de implementarse
+            } if(!et_email.getText().toString().contains(".")){ //TODO: cambiar por arroba cuando termine de implementarse
                 tv_error.setText("El campo Email no es válido");
                 return false;
             } if (!et_pass.getText().toString().equals(et_pass2.getText().toString())){
@@ -154,12 +127,4 @@ public class RegistrationActivity extends AppCompatActivity {
         tv_error.setText("");
         return true;
     }
-
-    /*private void setFormVisibility(int visibility) {
-        tv_title.setVisibility(visibility);
-        tv_error.setVisibility(visibility);
-        for (EditText field : fields) {
-            field.setVisibility(visibility);
-        }
-    }*/
 }

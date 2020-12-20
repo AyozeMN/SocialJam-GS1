@@ -1,13 +1,13 @@
 package gs1.proyecto;
 
-public class Users {
+public class User {
     private int id;
     private String usuario, nombre, email, pass;
 
     //Constructors
 
 
-    public Users(int id, String usuario, String nombre, String email, String pass) {
+    public User(int id, String usuario, String nombre, String email, String pass) {
         this.id = id;
         this.usuario = usuario;
         this.nombre = nombre;
@@ -15,7 +15,7 @@ public class Users {
         this.pass = pass;
     }
 
-    public Users() {
+    public User() {
     }
 
     @Override

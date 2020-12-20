@@ -38,7 +38,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
 
     }
 
-    public boolean addOne(Users user) {
+    public boolean addOne(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -55,7 +55,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         }
     }
 
-    public boolean deleteOne(Users user) {
+    public boolean deleteOne(User user) {
         //Busca el registro y si lo encuentra lo borra
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + USERS_TABLE + " WHERE " + COLUMN_ID + " = " + user.getId();
@@ -69,8 +69,8 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         }
     }
 
-    public List<Users> getEveryone() {
-        List<Users> returnList = new ArrayList<>();
+    public List<User> getEveryone() {
+        List<User> returnList = new ArrayList<>();
 
         //obtener los usuarios
         String queryString = "SELECT * FROM " + USERS_TABLE;
@@ -92,7 +92,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 String userEmail = cursor.getString(3);
                 String userPass = cursor.getString(4);
 
-                Users newUser = new Users(userID, userUsuario, userNombre, userEmail, userPass);
+                User newUser = new User(userID, userUsuario, userNombre, userEmail, userPass);
                 returnList.add(newUser);
 
             } while (cursor.moveToNext());
