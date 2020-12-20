@@ -11,23 +11,14 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnBibliotecas,btnCines,btnComidaRapida,btnCorreos,btnGasolineras,btnGimnasios,btnMuseos,btnPlayas,btnTiendasRopa;
+    Button btnBibliotecas, btnCines, btnComidaRapida, btnCorreos, btnGasolineras, btnGimnasios, btnMuseos, btnPlayas, btnTiendasRopa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
-        btnBibliotecas = findViewById(R.id.btn_Bibliotecas);
-        btnCines = findViewById(R.id.btn_Cines);
-        btnComidaRapida = findViewById(R.id.btn_ComidaRapida);
-        btnCorreos = findViewById(R.id.btn_Correos);
-        btnGasolineras = findViewById(R.id.btn_Gasolineras);
-        btnGimnasios = findViewById(R.id.btn_Gimnasios);
-        btnMuseos = findViewById(R.id.btn_Museos);
-        btnPlayas = findViewById(R.id.btn_Playas);
-        btnTiendasRopa = findViewById(R.id.btn_TiendasRopa);
+        initializeViewComponents();
 
         btnBibliotecas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,5 +35,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void initializeViewComponents() {
+        btnComidaRapida = findViewById(R.id.btn_ComidaRapida);
+        btnBibliotecas = findViewById(R.id.btn_Bibliotecas);
+        btnGasolineras = findViewById(R.id.btn_Gasolineras);
+        btnTiendasRopa = findViewById(R.id.btn_TiendasRopa);
+        btnGimnasios = findViewById(R.id.btn_Gimnasios);
+        btnCorreos = findViewById(R.id.btn_Correos);
+        btnMuseos = findViewById(R.id.btn_Museos);
+        btnPlayas = findViewById(R.id.btn_Playas);
+        btnCines = findViewById(R.id.btn_Cines);
     }
 }

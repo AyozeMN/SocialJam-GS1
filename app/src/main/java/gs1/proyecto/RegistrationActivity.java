@@ -2,7 +2,6 @@ package gs1.proyecto;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,9 +16,9 @@ import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private ArrayList <EditText> fields = new ArrayList<>();
+    private final ArrayList <EditText> fields = new ArrayList<>();
     private TextView tv_error;
-    EditText et_usuario, et_nombre, et_email, et_pass, et_pass2;
+    EditText et_user, et_name, et_email, et_pass, et_pass2;
     ListView lv_userList;
     Button bt_back, bt_next, bt_viewUsers;
     ArrayAdapter userArrayAdapter;
@@ -31,30 +30,9 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.registration_activity);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        bt_back = findViewById(R.id.btn_back);
-        bt_next = findViewById(R.id.btn_next);
-        bt_viewUsers = findViewById(R.id.btn_viewUsers);
-
-        lv_userList = findViewById(R.id.lv_userList);
-
-        et_usuario = findViewById(R.id.et_usuario);
-        et_nombre = findViewById(R.id.et_nombre);
-        et_email = findViewById(R.id.et_email);
-        et_pass = findViewById(R.id.et_pass);
-        et_pass2 = findViewById(R.id.et_pass2);
-
-        fields.add(et_usuario);
-        fields.add(et_nombre);
-        fields.add(et_email);
-        fields.add(et_pass);
-        fields.add(et_pass2);
-
-        tv_error = findViewById(R.id.tv_error);
-
-        tv_error.setText("");
+        initializeViewComponents();
 
         baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
-
         showUsersOnListView(baseDeDatos);
 
         //Volver a la pantalla anterior
@@ -69,10 +47,12 @@ public class RegistrationActivity extends AppCompatActivity {
         bt_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user;
-
                 if(isDataValid()) {
-                    user = new User(-1, et_usuario.getText().toString(), et_nombre.getText().toString(), et_email.getText().toString(), et_pass.getText().toString());
+                    User user = new User(-1,
+                            et_user.getText().toString(),
+                            et_name.getText().toString(),
+                            et_email.getText().toString(),
+                            et_pass.getText().toString());
                     Toast.makeText(RegistrationActivity.this, user.toString(), Toast.LENGTH_SHORT).show();
                     if(addUserToDB(user))
                         showUsersOnListView(baseDeDatos);
@@ -80,24 +60,17 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        bt_viewUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BaseDeDatos baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
-
-                //Metemos todos en la lista
-                showUsersOnListView(baseDeDatos);
-            }
+        bt_viewUsers.setOnClickListener(v -> {
+            BaseDeDatos baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
+            //Metemos todos en la lista
+            showUsersOnListView(baseDeDatos);
         });
 
-        lv_userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                User clickedUsuarios = (User) parent.getItemAtPosition(position);
-                baseDeDatos.deleteOne(clickedUsuarios);
-                showUsersOnListView(baseDeDatos);
-                Toast.makeText(RegistrationActivity.this, "Deleted " + clickedUsuarios.toString(), Toast.LENGTH_SHORT).show();
-            }
+        lv_userList.setOnItemClickListener((parent, view, position, id) -> {
+            User clickedUsuarios = (User) parent.getItemAtPosition(position);
+            baseDeDatos.deleteOne(clickedUsuarios);
+            showUsersOnListView(baseDeDatos);
+            Toast.makeText(RegistrationActivity.this, "Deleted " + clickedUsuarios.toString(), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -126,5 +99,24 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         tv_error.setText("");
         return true;
+    }
+
+    private void initializeViewComponents() {
+        bt_viewUsers = findViewById(R.id.btn_viewUsers);
+        lv_userList = findViewById(R.id.lv_userList);
+        et_user = findViewById(R.id.et_usuario);
+        et_name = findViewById(R.id.et_nombre);
+        et_email = findViewById(R.id.et_email);
+        tv_error = findViewById(R.id.tv_error);
+        et_pass2 = findViewById(R.id.et_pass2);
+        bt_back = findViewById(R.id.btn_back);
+        bt_next = findViewById(R.id.btn_next);
+        et_pass = findViewById(R.id.et_pass);
+        tv_error.setText("");
+        fields.add(et_email);
+        fields.add(et_pass2);
+        fields.add(et_user);
+        fields.add(et_name);
+        fields.add(et_pass);
     }
 }

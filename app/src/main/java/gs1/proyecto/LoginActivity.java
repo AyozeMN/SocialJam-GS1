@@ -15,10 +15,8 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText email_tv;
-    private EditText password_tv;
-    private Button login_button;
-    private Button register_button;
+    private EditText email_tv, password_tv;
+    private Button login_button, register_button;
     private TextView failedLogin_tv, ornament;
     private ImageView mainLogo, logo;
 
@@ -27,27 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
-        email_tv = findViewById(R.id.editTextEmail);
-        password_tv = findViewById(R.id.editTextPassword);
-        login_button = findViewById(R.id.loginButton);
-        register_button = findViewById(R.id.registerButton);
-        failedLogin_tv = findViewById(R.id.tv_loginfailed);
-        mainLogo = findViewById(R.id.iv_mainlogo);
-        logo = findViewById(R.id.imageView);
-        ornament = findViewById(R.id.textView);
-
-        // Muestra el logo al iniciar la aplicacion
-        int TIME_IN_MILLIS_LOGO_IS_SHOWN = 3000;
-        new Handler().postDelayed(() -> {
-            mainLogo.setVisibility(View.GONE);
-            email_tv.setVisibility(View.VISIBLE);
-            password_tv.setVisibility(View.VISIBLE);
-            login_button.setVisibility(View.VISIBLE);
-            register_button.setVisibility(View.VISIBLE);
-            ornament.setVisibility(View.VISIBLE);
-            logo.setVisibility(View.VISIBLE);
-        }, TIME_IN_MILLIS_LOGO_IS_SHOWN);
+        initializeViewComponents();
+        showLogo();
 
         // Valida los datos al presionar el boton de iniciar sesion
         login_button.setOnClickListener(v -> validate(email_tv.getText().toString(), password_tv.getText().toString()));
@@ -76,5 +55,28 @@ public class LoginActivity extends AppCompatActivity {
             password_tv.setText("");
             failedLogin_tv.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void initializeViewComponents() {
+        register_button = findViewById(R.id.registerButton);
+        failedLogin_tv = findViewById(R.id.tv_loginfailed);
+        password_tv = findViewById(R.id.editTextPassword);
+        login_button = findViewById(R.id.loginButton);
+        email_tv = findViewById(R.id.editTextEmail);
+        mainLogo = findViewById(R.id.iv_mainlogo);
+        ornament = findViewById(R.id.textView);
+        logo = findViewById(R.id.imageView);
+    }
+
+    private void showLogo() {
+        new Handler().postDelayed(() -> {
+            mainLogo.setVisibility(View.GONE);
+            email_tv.setVisibility(View.VISIBLE);
+            password_tv.setVisibility(View.VISIBLE);
+            login_button.setVisibility(View.VISIBLE);
+            register_button.setVisibility(View.VISIBLE);
+            ornament.setVisibility(View.VISIBLE);
+            logo.setVisibility(View.VISIBLE);
+        }, 3000);
     }
 }
