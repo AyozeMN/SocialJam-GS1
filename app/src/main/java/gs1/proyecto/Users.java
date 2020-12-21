@@ -1,21 +1,23 @@
 package gs1.proyecto;
 
-public class User {
+public class Users {
     private int id;
     private String usuario, nombre, email, pass;
+    private boolean admin;
 
     //Constructors
 
 
-    public User(int id, String usuario, String nombre, String email, String pass) {
+    public Users(int id, String usuario, String nombre, String email, String pass, Boolean admin) {
         this.id = id;
         this.usuario = usuario;
         this.nombre = nombre;
         this.email = email;
         this.pass = pass;
+        this.admin = admin;
     }
 
-    public User() {
+    public Users() {
     }
 
     @Override
@@ -26,6 +28,7 @@ public class User {
                 ", nombre='" + nombre + '\'' +
                 ", email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
+                ", admin='" + admin + '\'' +
                 '}';
     }
 
@@ -67,5 +70,13 @@ public class User {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

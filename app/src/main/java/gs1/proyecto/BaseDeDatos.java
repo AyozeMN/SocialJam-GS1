@@ -18,6 +18,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
     public static final String COLUMN_USER_NOMBRE = "USER_NOMBRE";
     public static final String COLUMN_USER_EMAIL = "USER_EMAIL";
     public static final String COLUMN_USER_PASS = "USER_PASS";
+    public static final String COLUMN_USER_ADMIN = "USER_ADMIN";
     public static final String COLUMN_ID = "ID";
 
     public BaseDeDatos(@Nullable Context context) {
@@ -27,7 +28,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
     //Se crea la primera vez que la bbdd es accedida, tiene que haber codigo para crear la nueva bbdd
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + USERS_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_USUARIO + " TEXT, " + COLUMN_USER_NOMBRE + " TEXT, " + COLUMN_USER_EMAIL + " TEXT, " + COLUMN_USER_PASS + " TEXT)";
+        String createTableStatement = "CREATE TABLE " + USERS_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_USUARIO + " TEXT, " + COLUMN_USER_NOMBRE + " TEXT, " + COLUMN_USER_EMAIL + " TEXT, " + COLUMN_USER_PASS + " TEXT, " + COLUMN_USER_ADMIN + " BOOL)";
 
         db.execSQL(createTableStatement);
     }
@@ -38,7 +39,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
 
     }
 
-    public boolean addOne(User user) {
+    public boolean addOne(Users user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -46,6 +47,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_NOMBRE, user.getNombre());
         cv.put(COLUMN_USER_EMAIL, user.getEmail());
         cv.put(COLUMN_USER_PASS, user.getPass());
+        cv.put(COLUMN_USER_ADMIN, user.isAdmin());
 
         long insert = db.insert(USERS_TABLE, null, cv);
         if (insert == -1) {
@@ -55,7 +57,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         }
     }
 
-    public boolean deleteOne(User user) {
+    public boolean deleteOne(Users user) {
         //Busca el registro y si lo encuentra lo borra
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + USERS_TABLE + " WHERE " + COLUMN_ID + " = " + user.getId();
@@ -69,8 +71,8 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         }
     }
 
-    public List<User> getEveryone() {
-        List<User> returnList = new ArrayList<>();
+    public List<Users> getEveryone() {
+        List<Users> returnList = new ArrayList<>();
 
         //obtener los usuarios
         String queryString = "SELECT * FROM " + USERS_TABLE;
@@ -91,8 +93,9 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 String userNombre = cursor.getString(2);
                 String userEmail = cursor.getString(3);
                 String userPass = cursor.getString(4);
+                boolean userAdmin = cursor.getInt(5) == 1 ? true: false;
 
-                User newUser = new User(userID, userUsuario, userNombre, userEmail, userPass);
+                Users newUser = new Users(userID, userUsuario, userNombre, userEmail, userPass, userAdmin);
                 returnList.add(newUser);
 
             } while (cursor.moveToNext());
