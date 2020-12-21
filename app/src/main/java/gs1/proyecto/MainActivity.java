@@ -11,100 +11,34 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnBibliotecas, btnCines, btnComidaRapida, btnCorreos, btnGasolineras, btnGimnasios, btnMuseos, btnPlayas, btnTiendasRopa;
-    String type;
+    private Button btnBibliotecas, btnCines, btnComidaRapida, btnCorreos, btnGasolineras, btnGimnasios, btnMuseos, btnPlayas, btnTiendasRopa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
         initializeViewComponents();
+        initializeButtons();
+    }
 
-        btnBibliotecas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "BIBLIOTECAS");
-                startActivity(intent);
-            }
-        });
+    private void initializeButtons() {
+        btnBibliotecas.setOnClickListener(v -> callMapActivity("BIBLIOTECAS"));
+        //btnCines.setOnClickListener(v -> callMapActivity("CINES"));
+        btnComidaRapida.setOnClickListener(v -> callMapActivity("COMIDARAPIDA"));
+        //btnCorreos.setOnClickListener(v -> callMapActivity("CORREOS"));
+        //btnGasolineras.setOnClickListener(v -> callMapActivity("GASO"));
+        //btnGimnasios.setOnClickListener(v -> callMapActivity("GIMNASIOS"));
+        //btnMuseos.setOnClickListener(v -> callMapActivity("MUSEOS"));
+        btnPlayas.setOnClickListener(v -> callMapActivity("PLAYAS"));
+        btnTiendasRopa.setOnClickListener(v -> callMapActivity("TIENDAS"));
+    }
 
-        btnCines.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "CINES");
-                startActivity(intent);
-            }
-        });
-
-        btnComidaRapida.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "COMIDARAPIDA");
-                startActivity(intent);
-            }
-        });
-
-        btnCorreos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "CORREOS");
-                startActivity(intent);
-            }
-        });
-
-        btnGasolineras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "GASOLINERAS");
-                startActivity(intent);
-            }
-        });
-
-        btnGimnasios.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "GIMNASIOS");
-                startActivity(intent);
-            }
-        });
-
-        btnMuseos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "MUSEOS");
-                startActivity(intent);
-            }
-        });
-
-        btnPlayas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "PLAYAS");
-                startActivity(intent);
-            }
-        });
-
-        btnTiendasRopa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "TIENDAS");
-                startActivity(intent);
-            }
-        });
-
-
-
-
+    private void callMapActivity(String filter) {
+        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+        intent.putExtra("type", filter);
+        startActivity(intent);
     }
 
     private void initializeViewComponents() {
