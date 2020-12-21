@@ -30,6 +30,60 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnCines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "CINES");
+                startActivity(intent);
+            }
+        });
+
+        btnComidaRapida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "COMIDARAPIDA");
+                startActivity(intent);
+            }
+        });
+
+        btnCorreos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "CORREOS");
+                startActivity(intent);
+            }
+        });
+
+        btnGasolineras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "GASOLINERAS");
+                startActivity(intent);
+            }
+        });
+
+        btnGimnasios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "GIMNASIOS");
+                startActivity(intent);
+            }
+        });
+
+        btnMuseos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "MUSEOS");
+                startActivity(intent);
+            }
+        });
+
         btnPlayas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,14 +102,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnComidaRapida.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("type", "COMIDARAPIDA");
-                startActivity(intent);
-            }
-        });
+
+
+
     }
 
     private void initializeViewComponents() {

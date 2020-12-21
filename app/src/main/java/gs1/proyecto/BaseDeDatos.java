@@ -50,25 +50,15 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_ADMIN, user.isAdmin());
 
         long insert = db.insert(USERS_TABLE, null, cv);
-        if (insert == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        return insert != -1;
     }
 
-    public boolean deleteOne(User user) {
+    public void deleteOne(User user) {
         //Busca el registro y si lo encuentra lo borra
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + USERS_TABLE + " WHERE " + COLUMN_ID + " = " + user.getId();
 
         Cursor cursor = db.rawQuery(queryString, null);
-
-        if (cursor.moveToFirst()) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public List<User> getEveryone() {
@@ -99,9 +89,8 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 returnList.add(newUser);
 
             } while (cursor.moveToNext());
-        } else {
-                //Fallo no pone nada
-        }
+        }  //Fallo no pone nada
+
 
         //Cerramos conexiones a la bbdd
         cursor.close();
@@ -129,8 +118,8 @@ public class BaseDeDatos extends SQLiteOpenHelper {
             do {
                 int id = cursor.getInt(0);
                 String nombre = cursor.getString(1);
-                Double lat = cursor.getDouble(2);
-                Double lng = cursor.getDouble(3);
+                double lat = cursor.getDouble(2);
+                double lng = cursor.getDouble(3);
                 String titulo = cursor.getString(4);
                 String nivel = cursor.getString(5);
 
@@ -138,9 +127,8 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 returnList.add(newMarcador);
 
             } while (cursor.moveToNext());
-        } else {
-            //Fallo no pone nada
-        }
+        }  //Fallo no pone nada
+
 
         //Cerramos conexiones a la bbdd
         cursor.close();

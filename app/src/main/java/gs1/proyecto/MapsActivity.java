@@ -33,7 +33,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private String tipo;
-    private BaseDeDatos baseDeDatos;
     private List<Marcador> listaMarcadores;
 
     //private Marker mbMunicipalJosefina,mbMunicipalIsabel,mbPublicaEstado,mbEspacioJoven,mbMunicipalRehoyas;
@@ -57,8 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Obtenemos el tipo segun el boton clickado anteriormente
         tipo = getIntent().getStringExtra("type");
 
-        baseDeDatos = new BaseDeDatos(MapsActivity.this);
-
+        BaseDeDatos baseDeDatos = new BaseDeDatos(MapsActivity.this);
         //Obtenemos toda la lista de los registros de la tabla tipo
         listaMarcadores = baseDeDatos.getMarcadores(tipo);
     }
