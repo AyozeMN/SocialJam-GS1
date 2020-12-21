@@ -34,7 +34,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.633" />
+            app:layout_constraintVertical_bias="0.705" />
 
         <EditText
             android:id="@+id/et_pass2"
@@ -133,7 +133,7 @@
             app:layout_constraintHorizontal_bias="0.795"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.713" />
+            app:layout_constraintVertical_bias="0.783" />
 
         <Button
             android:id="@+id/btn_back"
@@ -145,19 +145,7 @@
             app:layout_constraintHorizontal_bias="0.201"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.713" />
-
-        <Button
-            android:id="@+id/btn_viewUsers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/VerTodo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.799" />
+            app:layout_constraintVertical_bias="0.783" />
 
         <Switch
             android:id="@+id/sw_admin"

@@ -22,12 +22,11 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextView tv_error;
     private TextView tv_title;
     private int screen = 0;
-    EditText et_usuario, et_nombre, et_email, et_pass, et_pass2;
-    ListView lv_userList;
-    Button bt_back, bt_next, bt_viewUsers;
-    Switch sw_admin;
-    ArrayAdapter userArrayAdapter;
-    BaseDeDatos baseDeDatos;
+    private EditText et_usuario, et_nombre, et_email, et_pass, et_pass2;
+    private ListView lv_userList;
+    private Button bt_back, bt_next;
+    private Switch sw_admin;
+    private BaseDeDatos baseDeDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,6 @@ public class RegistrationActivity extends AppCompatActivity {
         initializeViewComponents();
 
         baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
-
-        showUsersOnListView(baseDeDatos);
 
         //Volver a la pantalla anterior
         bt_back.setOnClickListener(v -> finish());
@@ -53,18 +50,7 @@ public class RegistrationActivity extends AppCompatActivity {
             } else {
                 tv_error.setText("La información no es válida");
             }
-            showUsersOnListView(baseDeDatos);
-            //TODO finish();
-        });
-
-        bt_viewUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BaseDeDatos baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
-
-                //Metemos todos en la lista
-                showUsersOnListView(baseDeDatos);
-            }
+            finish();
         });
 
         lv_userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,7 +58,6 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 User clickedUsuarios = (User) parent.getItemAtPosition(position);
                 baseDeDatos.deleteOne(clickedUsuarios);
-                showUsersOnListView(baseDeDatos);
                 Toast.makeText(RegistrationActivity.this, "Deleted " + clickedUsuarios.toString(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -81,33 +66,21 @@ public class RegistrationActivity extends AppCompatActivity {
     private void initializeViewComponents() {
         bt_back = findViewById(R.id.btn_back);
         bt_next = findViewById(R.id.btn_next);
-        bt_viewUsers = findViewById(R.id.btn_viewUsers);
-
         sw_admin = findViewById(R.id.sw_admin);
-
         lv_userList = findViewById(R.id.lv_userList);
-
         et_usuario = findViewById(R.id.et_usuario);
         et_nombre = findViewById(R.id.et_nombre);
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
         et_pass2 = findViewById(R.id.et_pass2);
-
         fields.add(et_usuario);
         fields.add(et_nombre);
         fields.add(et_email);
         fields.add(et_pass);
         fields.add(et_pass2);
-
         tv_title = findViewById(R.id.tv_title);
         tv_error = findViewById(R.id.tv_error);
-
         tv_error.setText("");
-    }
-
-    private void showUsersOnListView(BaseDeDatos baseDeDatos2) {
-        userArrayAdapter = new ArrayAdapter<User>(RegistrationActivity.this, android.R.layout.simple_list_item_1, baseDeDatos2.getEveryone());
-        lv_userList.setAdapter(userArrayAdapter);
     }
 
     private boolean isDataValid() {

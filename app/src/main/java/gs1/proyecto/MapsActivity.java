@@ -36,7 +36,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private BaseDeDatos baseDeDatos;
     private List<Marcador> listaMarcadores;
 
-    //private Marker mbMunicipalJosefina,mbMunicipalIsabel,mbPublicaEstado,mbEspacioJoven,mbMunicipalRehoyas;
 
     // Unique code to check if the location has been requested.
     private final int ACCESS_LOCATION_REQUEST_CODE = 10001;
