@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeButtons() {
         btnBibliotecas.setOnClickListener(v -> callMapActivity("BIBLIOTECAS"));
-        //btnCines.setOnClickListener(v -> callMapActivity("CINES"));
+        btnCines.setOnClickListener(v -> callMapActivity("CINES"));
         btnComidaRapida.setOnClickListener(v -> callMapActivity("COMIDARAPIDA"));
-        //btnCorreos.setOnClickListener(v -> callMapActivity("CORREOS"));
-        //btnGasolineras.setOnClickListener(v -> callMapActivity("GASO"));
-        //btnGimnasios.setOnClickListener(v -> callMapActivity("GIMNASIOS"));
-        //btnMuseos.setOnClickListener(v -> callMapActivity("MUSEOS"));
+        btnCorreos.setOnClickListener(v -> callMapActivity("CORREOS"));
+        btnGasolineras.setOnClickListener(v -> callMapActivity("GASO"));
+        btnGimnasios.setOnClickListener(v -> callMapActivity("GIMNASIOS"));
+        btnMuseos.setOnClickListener(v -> callMapActivity("MUSEOS"));
         btnPlayas.setOnClickListener(v -> callMapActivity("PLAYAS"));
         btnTiendasRopa.setOnClickListener(v -> callMapActivity("TIENDAS"));
     }
