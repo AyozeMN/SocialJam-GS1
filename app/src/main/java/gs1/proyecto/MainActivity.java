@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         btnBibliotecas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivityBibliotecas.class);
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "BIBLIOTECAS");
                 startActivity(intent);
             }
         });
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         btnPlayas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivityPlayas.class);
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "PLAYAS");
                 startActivity(intent);
             }
         });
@@ -42,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 intent.putExtra("type", "TIENDAS");
+                startActivity(intent);
+            }
+        });
+
+        btnComidaRapida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "COMIDARAPIDA");
                 startActivity(intent);
             }
         });
