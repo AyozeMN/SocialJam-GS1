@@ -93,7 +93,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 String userNombre = cursor.getString(2);
                 String userEmail = cursor.getString(3);
                 String userPass = cursor.getString(4);
-                boolean userAdmin = cursor.getInt(5) == 1 ? true: false;
+                boolean userAdmin = cursor.getInt(5) == 1;
 
                 User newUser = new User(userID, userUsuario, userNombre, userEmail, userPass, userAdmin);
                 returnList.add(newUser);
@@ -101,6 +101,45 @@ public class BaseDeDatos extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         } else {
                 //Fallo no pone nada
+        }
+
+        //Cerramos conexiones a la bbdd
+        cursor.close();
+        db.close();
+
+        return returnList;
+    }
+
+    public List<Marcador> getMarcadores(String type) {
+        List<Marcador> returnList = new ArrayList<>();
+        String tabla = type + "_TABLA";
+        //Obtener los usuarios
+        String queryString = "SELECT * FROM " + tabla;
+
+        //Solo leer para q no se bloquee la bbdd (cuando escribes se bloquea)
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //tmb se puede usar db.execSQL(); void
+        //cursor rawQuery
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        //controlar que se ejecuto la orden query
+        if (cursor.moveToFirst()) {
+            //crea objetos de usuario en la lista mientras haya
+            do {
+                int id = cursor.getInt(0);
+                String nombre = cursor.getString(1);
+                Double lat = cursor.getDouble(2);
+                Double lng = cursor.getDouble(3);
+                String titulo = cursor.getString(4);
+                String nivel = cursor.getString(5);
+
+                Marcador newMarcador = new Marcador(id, nombre, lat, lng, titulo, nivel);
+                returnList.add(newMarcador);
+
+            } while (cursor.moveToNext());
+        } else {
+            //Fallo no pone nada
         }
 
         //Cerramos conexiones a la bbdd

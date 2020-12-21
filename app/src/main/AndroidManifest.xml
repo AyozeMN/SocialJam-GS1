@@ -29,6 +29,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".MapsActivity"
+            android:label="MapsActivity" />
+        <activity
             android:name=".MapsActivityBibliotecas"
             android:label="@string/title_activity_maps_bibliotecas" />
         <activity

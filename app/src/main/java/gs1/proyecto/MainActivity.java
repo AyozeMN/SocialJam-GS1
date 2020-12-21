@@ -12,6 +12,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     Button btnBibliotecas, btnCines, btnComidaRapida, btnCorreos, btnGasolineras, btnGimnasios, btnMuseos, btnPlayas, btnTiendasRopa;
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MapsActivityPlayas.class);
+                startActivity(intent);
+            }
+        });
+
+        btnTiendasRopa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("type", "TIENDAS");
                 startActivity(intent);
             }
         });
