@@ -46,11 +46,10 @@ public class RegistrationActivity extends AppCompatActivity {
             if(isDataValid()) {
                 User user = new User(-1, et_usuario.getText().toString(), et_nombre.getText().toString(), et_email.getText().toString(), et_pass.getText().toString(), sw_admin.isChecked());
                 BaseDeDatos baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
-                boolean success = baseDeDatos.addOne(user);
+                if(baseDeDatos.addOne(user)) finish(); // TODO esperar un poco o mostrar un mensaje de confirmacion antes de cerrar
             } else {
                 tv_error.setText("La información no es válida");
             }
-            finish();
         });
 
         lv_userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
