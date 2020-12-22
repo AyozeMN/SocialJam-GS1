@@ -164,12 +164,15 @@ public class BaseDeDatos extends SQLiteOpenHelper {
     public List<Marcador> getEverything(){
         List<Marcador> returnEverything = new ArrayList<>();
 
-        String queryString = "SELECT * " +
-                "FROM BIBLIOTECAS_TABLA";/* +
-                "CROSS JOIN CINES_TABLA";/* +
-                "CROSS JOIN COMIDARAPIDA_TABLA" +
-                "CROSS JOIN CORREOS_TABLA, GASOLINERAS_TABLA, GIMNASIOS_TABLA, " +
-                "MUSEOS_TABLA, PLAYAS_TABLA, TIENDAS_TABLA";*/
+        String queryString = "SELECT * FROM BIBLIOTECAS_TABLA UNION ALL " +
+                "SELECT * FROM CINES_TABLA UNION ALL " +
+                "SELECT * FROM COMIDARAPIDA_TABLA UNION ALL " +
+                "SELECT * FROM CORREOS_TABLA UNION ALL " +
+                "SELECT * FROM GASOLINERAS_TABLA UNION ALL " +
+                "SELECT * FROM GIMNASIOS_TABLA UNION ALL " +
+                "SELECT * FROM MUSEOS_TABLA UNION ALL " +
+                "SELECT * FROM PLAYAS_TABLA UNION ALL " +
+                "SELECT * FROM TIENDAS_TABLA";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
