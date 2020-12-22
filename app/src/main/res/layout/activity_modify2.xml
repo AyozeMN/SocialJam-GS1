@@ -23,8 +23,8 @@
 
     <ListView
         android:id="@+id/lv_todo"
-        android:layout_width="376dp"
-        android:layout_height="575dp"
+        android:layout_width="358dp"
+        android:layout_height="449dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -41,45 +41,65 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lv_todo"
-        app:layout_constraintVertical_bias="0.369">
+        app:layout_constraintVertical_bias="0.0">
 
         <RadioButton
             android:id="@+id/rb_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/GreenButton"
-            android:textColor="#4CAF50" />
+            android:textColor="#000000"
+            app:buttonTint="#4CAF50" />
 
         <RadioButton
             android:id="@+id/rb_yellow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/YellowButton"
-            android:textColor="#FFEB3B" />
+            android:textColor="#000000"
+            app:buttonTint="#FFEB3B" />
 
         <RadioButton
             android:id="@+id/rb_orange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:text="@string/OrangeButton"
-            android:textColor="#FF9800" />
+            android:textColor="#000000"
+            app:buttonTint="#FF9800" />
 
         <RadioButton
             android:id="@+id/rb_red"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/RedButton"
-            android:textColor="#F44336" />
+            android:textColor="#000000"
+            app:buttonTint="#F44336" />
 
         <RadioButton
             android:id="@+id/rb_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/BlackButton" />
+            android:text="@string/BlackButton"
+            android:textColor="#000000"
+            app:buttonTint="#000000" />
 
     </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_actualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/ActualizarNivel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_niveles"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

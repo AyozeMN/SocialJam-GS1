@@ -129,11 +129,46 @@ public class BaseDeDatos extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }  //Fallo no pone nada
 
-
         //Cerramos conexiones a la bbdd
         cursor.close();
         db.close();
 
         return returnList;
     }
+
+    public List<Marcador> getEverything(){
+        List<Marcador> returnEverything = new ArrayList<>();
+
+        String queryString = "SELECT * " +
+                "FROM BIBLIOTECAS_TABLA";/* +
+                "CROSS JOIN CINES_TABLA";/* +
+                "CROSS JOIN COMIDARAPIDA_TABLA" +
+                "CROSS JOIN CORREOS_TABLA, GASOLINERAS_TABLA, GIMNASIOS_TABLA, " +
+                "MUSEOS_TABLA, PLAYAS_TABLA, TIENDAS_TABLA";*/
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String nombre = cursor.getString(1);
+                double lat = cursor.getDouble(2);
+                double lng = cursor.getDouble(3);
+                String titulo = cursor.getString(4);
+                String nivel = cursor.getString(5);
+
+                Marcador newMarcador = new Marcador(id, nombre, lat, lng, titulo, nivel);
+                returnEverything.add(newMarcador);
+            } while (cursor.moveToNext());
+        }
+
+        //Cerramos conexiones a la bbdd
+        cursor.close();
+        db.close();
+
+        return returnEverything;
+    }
+
 }

@@ -26,4 +26,5 @@
     <string name="OrangeButton">Orange</string>
     <string name="RedButton">Red</string>
     <string name="BlackButton">Black</string>
+    <string name="ActualizarNivel">Actualizar Nivel</string>
 </resources>
