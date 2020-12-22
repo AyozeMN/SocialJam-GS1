@@ -55,10 +55,10 @@ public class LoginActivity extends AppCompatActivity {
         if(c.getCount()==1 && c.moveToFirst()){
             Toast.makeText(this, "Bienvenido " + user , Toast.LENGTH_SHORT).show();
 
-            if(c.getString(5).equals("false")){
+            if(c.getInt(5) == 0){
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
-            } else if(c.getString(5).equals("true")){
+            } else if(c.getInt(5) == 1){
                 Intent intent = new Intent(LoginActivity.this, ModifyActivity.class);
                 startActivity(intent);
             }

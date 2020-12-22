@@ -199,4 +199,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         return returnEverything;
     }
 
+    public void changeLevel() {
+
+    }
 }

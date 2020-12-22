@@ -50,6 +50,7 @@ public class ModifyActivity extends AppCompatActivity {
             lv_todo.setSelection(position);
             getAlertLevel(position);
         });
+
         bt_actualizar.setOnClickListener(v -> changeLevel());
 
         showEverything(baseDeDatos);
