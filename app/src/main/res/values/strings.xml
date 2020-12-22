@@ -20,4 +20,10 @@
     <string name="playas">Playas</string>
     <string name="tiendasRopa">Tiendas Ropa</string>
     <string name="imageContDesc">Descripción de la imagen. Falta rellenar.</string>
+    <string name="AdminPanel">Panel de Administrador</string>
+    <string name="GreenButton">Green</string>
+    <string name="YellowButton">Yellow</string>
+    <string name="OrangeButton">Orange</string>
+    <string name="RedButton">Red</string>
+    <string name="BlackButton">Black</string>
 </resources>
