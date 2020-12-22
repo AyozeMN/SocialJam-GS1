@@ -82,6 +82,10 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         return c;
     }
 
+    public void changeAlertLevel(Marcador marcador, String level){
+        //todo: cambiar nivel de alerta
+    }
+
     public List<User> getEveryone() {
         List<User> returnList = new ArrayList<>();
 

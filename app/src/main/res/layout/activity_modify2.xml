@@ -26,10 +26,14 @@
         android:layout_width="358dp"
         android:layout_height="449dp"
         android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:choiceMode="singleChoice"
+        android:listSelector="#8A8A8A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tittle">
+        app:layout_constraintTop_toBottomOf="@+id/tv_tittle"
+        android:focusable="true">
 
     </ListView>
 

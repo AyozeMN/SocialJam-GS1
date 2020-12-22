@@ -20,8 +20,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private ArrayList <EditText> fields = new ArrayList<>();
     private TextView tv_error;
-    private TextView tv_title;
-    private int screen = 0;
     private EditText et_usuario, et_nombre, et_email, et_pass, et_pass2;
     private ListView lv_userList;
     private Button bt_back, bt_next;
@@ -74,26 +72,6 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private void initializeViewComponents() {
-        bt_back = findViewById(R.id.btn_back);
-        bt_next = findViewById(R.id.btn_next);
-        sw_admin = findViewById(R.id.sw_admin);
-        lv_userList = findViewById(R.id.lv_userList);
-        et_usuario = findViewById(R.id.et_usuario);
-        et_nombre = findViewById(R.id.et_nombre);
-        et_email = findViewById(R.id.et_email);
-        et_pass = findViewById(R.id.et_pass);
-        et_pass2 = findViewById(R.id.et_pass2);
-        fields.add(et_usuario);
-        fields.add(et_nombre);
-        fields.add(et_email);
-        fields.add(et_pass);
-        fields.add(et_pass2);
-        tv_title = findViewById(R.id.tv_title);
-        tv_error = findViewById(R.id.tv_error);
-        tv_error.setText("");
-    }
-
     private boolean isDataValid() {
         for (EditText field : fields) {
             if(field.getText().toString().length() < 3){
@@ -111,6 +89,25 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         tv_error.setText("");
         return true;
+    }
+
+    private void initializeViewComponents() {
+        bt_next = findViewById(R.id.btn_next);
+        bt_back = findViewById(R.id.btn_back);
+        sw_admin = findViewById(R.id.sw_admin);
+        lv_userList = findViewById(R.id.lv_userList);
+        et_usuario = findViewById(R.id.et_usuario);
+        et_nombre = findViewById(R.id.et_nombre);
+        et_email = findViewById(R.id.et_email);
+        et_pass = findViewById(R.id.et_pass);
+        et_pass2 = findViewById(R.id.et_pass2);
+        fields.add(et_usuario);
+        fields.add(et_nombre);
+        fields.add(et_email);
+        fields.add(et_pass);
+        fields.add(et_pass2);
+        tv_error = findViewById(R.id.tv_error);
+        tv_error.setText("");
     }
 
 }

@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
         // gets current user location fix on the device
@@ -92,6 +94,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        String alerta = "";
+        String mensaje = "";
+        LatLng latLng = marker.getPosition();
+        for (Marcador m: listaMarcadores) {
+            if(m.getLatitud()==latLng.latitude) alerta = m.getNivel();
+        }
+        switch (alerta){
+            case "yellow":
+                mensaje = "AMARILLA";
+                break;
+            case "green":
+                mensaje = "VERDE";
+                break;
+            case "black":
+                mensaje = "NEGRA";
+                break;
+            case "orange":
+                mensaje = "NARANJA";
+                break;
+            case "red":
+                mensaje = "ROJA";
+                break;
+        }
+        Toast.makeText(MapsActivity.this, "ALERTA COLOR: "+ mensaje, Toast.LENGTH_SHORT).show();
+        return false;
+    }
+
     private void checkGeoPermission() {
         // Checks if the geolocation permission has been granted by the user.
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
@@ -105,12 +136,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, ACCESS_LOCATION_REQUEST_CODE);
             }
         }
-    }
-
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        Toast.makeText(MapsActivity.this, "ALERTA COLOR: ", Toast.LENGTH_SHORT).show();
-        return false;
     }
 
     @SuppressLint("MissingPermission")
