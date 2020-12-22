@@ -50,11 +50,18 @@ public class LoginActivity extends AppCompatActivity {
     // llama a la actividad correspondiente o
     // muestra mensaje de contraseña erronea
     private void validate(String user, String password){
-        if(baseDeDatos.checkLogin(user.toLowerCase(), password)){
+        Cursor c = baseDeDatos.checkLogin(user.toLowerCase(), password);
+
+        if(c.getCount()==1 && c.moveToFirst()){
             Toast.makeText(this, "Bienvenido " + user , Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
+            if(c.getString(5).equals("false")){
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            } else if(c.getString(5).equals("true")){
+                Intent intent = new Intent(LoginActivity.this, ModifyActivity.class);
+                startActivity(intent);
+            }
         } else {
             password_tv.setText("");
             failedLogin_tv.setVisibility(View.VISIBLE);

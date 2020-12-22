@@ -51,13 +51,15 @@ public class RegistrationActivity extends AppCompatActivity {
                         et_pass.getText().toString(),                   // password
                         sw_admin.isChecked()                            // admin
                 ); // new User
+
                 BaseDeDatos baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
+
                 if(baseDeDatos.addOne(user)){
                     Toast.makeText(this, "Usuario añadido correctamente.", Toast.LENGTH_SHORT).show();
                     finish();
+                } else {
+                    tv_error.setText("El Usuario o Email ya existe en la base de datos");
                 }
-            } else {
-                tv_error.setText("La información no es válida");
             }
         });
 
@@ -66,6 +68,7 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 User clickedUsuarios = (User) parent.getItemAtPosition(position);
                 baseDeDatos.deleteOne(clickedUsuarios);
+
                 Toast.makeText(RegistrationActivity.this, "Deleted " + clickedUsuarios.toString(), Toast.LENGTH_SHORT).show();
             }
         });

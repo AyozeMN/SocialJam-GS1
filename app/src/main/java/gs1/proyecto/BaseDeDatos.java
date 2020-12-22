@@ -68,7 +68,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(queryString, null);
     }
 
-    public boolean checkLogin(String user, String pass){
+    public Cursor checkLogin(String user, String pass){
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor c = db.rawQuery(
@@ -78,8 +78,8 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 null
         );
 
-        return c.getCount() > 0;
-        //return c;
+        //return c.getCount() > 0;
+        return c;
     }
 
     public List<User> getEveryone() {
