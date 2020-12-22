@@ -33,7 +33,6 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_activity);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
         initializeViewComponents();
 
         baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
@@ -44,9 +43,19 @@ public class RegistrationActivity extends AppCompatActivity {
         //avanzar de pantalla
         bt_next.setOnClickListener(v -> {
             if(isDataValid()) {
-                User user = new User(-1, et_usuario.getText().toString(), et_nombre.getText().toString(), et_email.getText().toString(), et_pass.getText().toString(), sw_admin.isChecked());
+                User user = new User(
+                        -1,                                         // id
+                        et_usuario.getText().toString().toLowerCase(),  // user
+                        et_nombre.getText().toString(),                 // name
+                        et_email.getText().toString(),                  // email
+                        et_pass.getText().toString(),                   // password
+                        sw_admin.isChecked()                            // admin
+                ); // new User
                 BaseDeDatos baseDeDatos = new BaseDeDatos(RegistrationActivity.this);
-                if(baseDeDatos.addOne(user)) finish(); // TODO esperar un poco o mostrar un mensaje de confirmacion antes de cerrar
+                if(baseDeDatos.addOne(user)){
+                    Toast.makeText(this, "Usuario añadido correctamente.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             } else {
                 tv_error.setText("La información no es válida");
             }
@@ -87,10 +96,12 @@ public class RegistrationActivity extends AppCompatActivity {
             if(field.getText().toString().length() < 3){
                 tv_error.setText(String.format("El campo %s debe tener más de 2 carácteres", field.getHint().toString()));
                 return false;
-            } if(!et_email.getText().toString().contains(".")){ //cambiar por arroba cuando termine de implementarse
+            }
+            if(!et_email.getText().toString().contains(".")){ //cambiar por arroba cuando termine de implementarse
                 tv_error.setText("El campo Email no es válido");
                 return false;
-            } if (!et_pass.getText().toString().equals(et_pass2.getText().toString())){
+            }
+            if (!et_pass.getText().toString().equals(et_pass2.getText().toString())){
                 tv_error.setText("Las contraseñas no coinciden");
                 return false;
             }

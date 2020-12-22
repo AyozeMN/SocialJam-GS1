@@ -46,7 +46,7 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -60,7 +60,7 @@
                 app:srcCompat="@drawable/logo" />
 
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextUser"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginTop="32dp"
@@ -68,7 +68,7 @@
                 android:drawableStart="@drawable/ic_action_user"
                 android:drawableLeft="@drawable/ic_action_user"
                 android:ems="10"
-                android:hint=" Email"
+                android:hint="Usuario"
                 android:inputType="textEmailAddress"
                 android:textSize="22sp"
                 android:visibility="invisible"
@@ -121,7 +121,7 @@
                 android:id="@+id/tv_loginfailed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email o contraseña incorrectos."
+                android:text="Usuario o contraseña incorrectos."
                 android:textColor="#D50101"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/loginButton"

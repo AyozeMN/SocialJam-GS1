@@ -28,7 +28,14 @@ public class BaseDeDatos extends SQLiteOpenHelper {
     //Se crea la primera vez que la bbdd es accedida, tiene que haber codigo para crear la nueva bbdd
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + USERS_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_USUARIO + " TEXT, " + COLUMN_USER_NOMBRE + " TEXT, " + COLUMN_USER_EMAIL + " TEXT, " + COLUMN_USER_PASS + " TEXT, " + COLUMN_USER_ADMIN + " BOOL)";
+        String createTableStatement =
+                "CREATE TABLE " + USERS_TABLE + " ("
+                        + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + COLUMN_USER_USUARIO + " TEXT, "
+                        + COLUMN_USER_NOMBRE + " TEXT, "
+                        + COLUMN_USER_EMAIL + " TEXT, "
+                        + COLUMN_USER_PASS + " TEXT, "
+                        + COLUMN_USER_ADMIN + " BOOL)";
 
         db.execSQL(createTableStatement);
     }
@@ -59,6 +66,20 @@ public class BaseDeDatos extends SQLiteOpenHelper {
         String queryString = "DELETE FROM " + USERS_TABLE + " WHERE " + COLUMN_ID + " = " + user.getId();
 
         Cursor cursor = db.rawQuery(queryString, null);
+    }
+
+    public boolean checkLogin(String user, String pass){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor c = db.rawQuery(
+                "SELECT * FROM " + USERS_TABLE
+                        + " WHERE " + COLUMN_USER_USUARIO + " = '" + user.toLowerCase() +"' AND "
+                        + COLUMN_USER_PASS + " = '" + pass +"'",
+                null
+        );
+
+        return c.getCount() > 0;
+        //return c;
     }
 
     public List<User> getEveryone() {

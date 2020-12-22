@@ -1,6 +1,7 @@
 package gs1.proyecto;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,10 +17,11 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText email_tv, password_tv;
+    private EditText user_tv, password_tv;
     private Button login_button, register_button;
     private TextView failedLogin_tv, ornament;
     private ImageView mainLogo, logo;
+    private BaseDeDatos baseDeDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,11 @@ public class LoginActivity extends AppCompatActivity {
         initializeViewComponents();
         showLogo();
 
+        baseDeDatos = new BaseDeDatos(LoginActivity.this);
+
         // Valida los datos al presionar el boton de iniciar sesion
-        login_button.setOnClickListener(v -> validate(email_tv.getText().toString(), password_tv.getText().toString()));
+        login_button.setOnClickListener(v ->
+                validate(user_tv.getText().toString(), password_tv.getText().toString()));
 
         //LLama a la actividad para crear usuario
         register_button.setOnClickListener(v -> {
@@ -43,12 +49,10 @@ public class LoginActivity extends AppCompatActivity {
 
     // llama a la actividad correspondiente o
     // muestra mensaje de contraseña erronea
-    private void validate(String email, String password){
-        if(email.equals("admin") && password.equals("admin")) {
-            Intent intent = new Intent(LoginActivity.this, ModifyActivity.class);
-            startActivity(intent);
-        }
-        else if (email.equals("user") && password.equals("user")){
+    private void validate(String user, String password){
+        if(baseDeDatos.checkLogin(user.toLowerCase(), password)){
+            Toast.makeText(this, "Bienvenido " + user , Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         } else {
@@ -62,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         failedLogin_tv = findViewById(R.id.tv_loginfailed);
         password_tv = findViewById(R.id.editTextPassword);
         login_button = findViewById(R.id.loginButton);
-        email_tv = findViewById(R.id.editTextEmail);
+        user_tv = findViewById(R.id.editTextUser);
         mainLogo = findViewById(R.id.iv_mainlogo);
         ornament = findViewById(R.id.textView);
         logo = findViewById(R.id.imageView);
@@ -71,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
     private void showLogo() {
         new Handler().postDelayed(() -> {
             mainLogo.setVisibility(View.GONE);
-            email_tv.setVisibility(View.VISIBLE);
+            user_tv.setVisibility(View.VISIBLE);
             password_tv.setVisibility(View.VISIBLE);
             login_button.setVisibility(View.VISIBLE);
             register_button.setVisibility(View.VISIBLE);
