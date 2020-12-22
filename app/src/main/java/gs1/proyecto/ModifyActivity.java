@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.common.util.Strings;
 
@@ -56,9 +57,9 @@ public class ModifyActivity extends AppCompatActivity {
             listSelected = position;
         });
 
-        /*bt_actualizar.setOnClickListener(view -> {
+        bt_actualizar.setOnClickListener(view -> {
             setAlertLevel(listSelected);
-        });*/
+        });
 
         showEverything(baseDeDatos);
     }
@@ -70,22 +71,22 @@ public class ModifyActivity extends AppCompatActivity {
         levels.put("orange", 2);
         levels.put("red", 3);
         levels.put("black", 4);
+
         String level = listaMarcadores.get(position).getNivel();
         radioGroup.check(radioGroup.getChildAt(levels.get(level)).getId());
     }
 
     private void setAlertLevel(int position) {
-        int selected = radioGroup.getCheckedRadioButtonId();
-
         Map<Integer, String> levels = new HashMap<>();
-        levels.put(0, "green");
-        levels.put(1, "yellow");
-        levels.put(2, "orange");
-        levels.put(3, "red");
-        levels.put(4, "black");
+        levels.put(radioGroup.getChildAt(0).getId(), "green");
+        levels.put(radioGroup.getChildAt(1).getId(), "yellow");
+        levels.put(radioGroup.getChildAt(2).getId(), "orange");
+        levels.put(radioGroup.getChildAt(3).getId(), "red");
+        levels.put(radioGroup.getChildAt(4).getId(), "black");
 
-        String level = levels.get(selected);
+        String level = levels.get(radioGroup.getCheckedRadioButtonId());
         listaMarcadores.get(position).setNivel(level);
+        // TODO: Realizar el cambio a la BBDD
     }
 
     private void changeLevel() {
